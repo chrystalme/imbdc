@@ -19,7 +19,7 @@
     <%= movie.category %>
   </p>
 
-  <% if action_name != "show" %>
+  <% if user_signed_in? && action_name != "show" %>
     <%= link_to "Show this movie", movie, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this movie', edit_movie_path(movie), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">

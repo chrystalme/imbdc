@@ -14,10 +14,8 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-  <header class="flex justify-between items-center h-16 mx-auto w-[90%]">
-  <div><h2>Imdbc</h2></div><nav class="just">Sign In</nav>
-  </header>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto mt-28 px-5">
+    <%= render 'layouts/navbar' %>
       <%= yield %>
     </main>
   </body>

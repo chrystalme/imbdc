@@ -1,0 +1,10 @@
+<header class="flex justify-between items-center h-16 mx-auto w-[90%]">
+<div><h2 class="font-bold">Imdbc</h2>
+ </div>
+<% if user_signed_in? %>
+  <nav class='flex flex-row items-center'><%= current_user.name  %>
+  <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: "bg-gray-200 px-4 py-3 rounded" %></nav>
+<% else %>
+  
+<% end %>
+  </header>
