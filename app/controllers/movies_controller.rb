@@ -1,9 +1,14 @@
 class MoviesController < ApplicationController
+  skip_before_action :authenticate_user!, only: %w[index]
   before_action :set_movie, only: %i[ show edit update destroy ]
 
   # GET /movies or /movies.json
   def index
-    @movies = Movie.all
+    if params[:category_id].present?
+      @movies = Movie.where(category: params[:category])
+    else
+    @movies = Movie.all#paginate(page: params[:page], per_page: 5)
+    end
   end
 
   # GET /movies/1 or /movies/1.json

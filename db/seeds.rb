@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts "\n== Seeding the database with fixtures =="
+20.times do
+  Movie.create!(title: Faker::Movie.title, text: Faker::Lorem.paragraph, category: [1..7].sample)
+end
+puts "\n== Seeding completed. =="
