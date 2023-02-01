@@ -8,6 +8,6 @@
 
 puts "\n== Seeding the database with fixtures =="
 20.times do
-  Movie.create!(title: Faker::Movie.title, text: Faker::Lorem.paragraph, category: Category.all.pluck('id').sample)
+  Movie.create!(title: Faker::Movie.title, text: Faker::Lorem.paragraph, category: Category.all.sample)
 end
 puts "\n== Seeding completed. =="

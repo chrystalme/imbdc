@@ -1,15 +1,15 @@
-<div class="w-full">
+<div class="w-[90%] m-auto">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 <%= form_tag movies_path, method: :get do %>
-  <%= select_tag :category, options_for_select(Movie::CATEGORIES.map.with_index { |c, index| [c, index] }), prompt: "All categories" %>
+  <%= select_tag :category_id, options_for_select(Category.all.map { |c| [c.name, c.id] }), prompt: "All categories" %>
   <%= submit_tag "Filter" %>
 <% end %>
 
 
 
-  <div class="flex justify-between items-center">
+  <div class="flex justify-center items-center">
     <h1 class="font-bold text-4xl">Movies</h1>
     <% if user_signed_in? && current_user.role == 'admin' %>
      <%= link_to 'New movie', new_movie_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
@@ -21,3 +21,5 @@
     <%= render @movies%>
   </div>
 </div>
+<%== pagy_nav(@pagy).html_safe %>
+ 

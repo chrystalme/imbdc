@@ -5,9 +5,9 @@ class MoviesController < ApplicationController
   # GET /movies or /movies.json
   def index
     if params[:category_id].present?
-      @movies = Movie.where(category: params[:category])
+      @pagy, @movies = pagy(Movie.where(category: params[:category_id]), items: 5)
     else
-    @movies = Movie.all#paginate(page: params[:page], per_page: 5)
+    @pagy, @movies = pagy(Movie.all, items: 5)
     end
   end
 

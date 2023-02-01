@@ -77,4 +77,4 @@ group :test do
 end
 
 gem "faker", "~> 3.1"
-gem 'will_paginate', '~> 3.1.0'
+gem "pagy", "~> 6.0"
