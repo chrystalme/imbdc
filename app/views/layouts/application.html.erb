@@ -12,16 +12,9 @@
   </head>
 
   <body>
- <!---
-  <% if notice.present? %>
-    <p class="notice"><%= notice %></p>    
-  <% end %>
-  <% if alert.present? %>
-    <p class="alert"><%= alert %></p>
-  <% end %>
-  --->
     <main class="container mx-auto mt-2 px-5">
     <%= render 'layouts/navbar' %>
+    <%#= render 'layouts/errors' %>
       <%= yield %>
     </main>
   </body>

@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum role: [:user, :admin]
-
+  has_many :ratings
   def name
     email.split('@').first.capitalize
   end

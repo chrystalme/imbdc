@@ -1,43 +1,12 @@
-<div class='m-auto'>
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+ <%= render 'devise/shared/error_messages'  %>
 </div>
-
-
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <div class="w-full bg-white rounded-lg md:mt-0 sm:max-w-md xl:p-0 text-gray-700>
+      <div class="w-full bg-white shadow rounded-lg md:mt-0 sm:max-w-md xl:p-0 text-gray-700>
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 class="text- text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
                   Register an account
               </h1>
-              <form class="space-y-4 md:space-y-6" action="/users/sign_up" method="POST">
+              <form class="space-y-4 md:space-y-6" action="/users" method="POST">
               <input type="hidden" name='authenticity_token' value="<%= form_authenticity_token %>">
                   <div>
                       <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
@@ -51,7 +20,7 @@
                       <label for="user_password_confirmation" class="block mb-2 text-sm font-medium text-gray-900">Confirm password</label>
                       <input type="password" name="user[password_confirmation]" id="user_password_confirmation" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                   </div>
-                  <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Register</button>
+                  <button type="submit" data-disable-with="Sign up" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Register</button>
                   <p class="text-sm font-light text-gray-500">
                       Don’t have an account yet? <a href="/users/sign_in" class="font-medium text-primary-600 hover:underline ">Sign in</a>
                   </p>
