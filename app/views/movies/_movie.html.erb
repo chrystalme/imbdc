@@ -15,30 +15,73 @@
                <%= movie.category.name %>
             </p>
          </div>
+        
          <%= link_to movie_path(movie) do %>
          <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900"><%= truncate(movie.title, length: 35)%></h5>
          <% end %>
          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><%= truncate(movie.text, length: 60)%></p>
          <!-- Start here the test for button_star color-->
+         <%#= form_for [movie, movie.ratings.build] do |f| %>
+            <%# if user_signed_in? %>
+               <%# num = user_rating_for(movie)%>
+               <%# (1..num).each do |i| %>
+                  <%# f.radio_button :score, i, checked: params[:rating].try(:[], :score) == i %>
+                  <%#= show_svg("star-filled.svg")%>
+               <%# end %>
+               <%# ((num+1)..10).each do |i| %>  
+                  <%# f.radio_button :score, i, checked: params[:rating].try(:[], :score) == i %>
+                  <%#= show_svg("star-empty.svg")%>
+               <%# end %>
+            <%# else %>
+               <%# (1..10).each do |i| %>  
+                  <%# f.radio_button :score, i, checked: params[:rating].try(:[], :score) == i %>
+                  <%#= show_svg("star-empty.svg")%>
+               <%# end %>
+            <%# end %>
+            <%#= f.submit "Rate" %>
+         <%# end %>
          <%= form_for [movie, movie.ratings.build] do |f| %>
-            <% num = user_rating_for(movie)%>
-            <% (1..num).each do |i| %>
-            <% radio_button_tag "rating[score]", i, params[:rating].try(:[], :score) == i %>
-            <%= show_svg "star-filled.svg"%>
-            <% end %>
-            <% (1..(10-num)).each do |i| %>  
-            <% radio_button_tag "rating[score]", i, params[:rating].try(:[], :score) == i %>
-            <%= show_svg "star-empty.svg"%>
-   
+         <fieldset>
+            <span class="star-cb-group">
+               <% if user_signed_in? %>
+                  <% num = user_rating_for(movie)%>
+                  <% (1..num).each do |i| %>
+                     <%= f.radio_button :score, i, checked: params[:rating].try(:[], :score) == i %>
+                     <%#= show_svg("star-filled.svg")%>
+                     <input type="radio" id="rating-i" name="rating" value="i" /><label for="rating-i">i</label>
+                  <% end %>
+                  <% ((num+1)..10).each do |i| %>  
+                     <% f.radio_button :score, i, checked: params[:rating].try(:[], :score) == i %>
+                     <%#= show_svg("star-empty.svg")%>
+                     <input type="radio" id="rating-i" name="rating" value="i" /><label for="rating-i">i</label>
+                  <% end %>
+               <% else %>
+                  <% (1..10).each do |i| %>  
+                     <%= f.radio_button :score, i, checked: params[:rating].try(:[], :score) == i %>
+                     <%#= show_svg("star-empty.svg")%>
+                     <input type="radio" id="rating-i" name="rating" value="i" /><label for="rating-i">i</label>
+                  <% end %>
                <% end %>
             <%= f.submit "Rate" %>
+            </span>
+         </fieldset>
          <% end %>
-   
          <div class="flex item-center my-3" id="ratings">
             <% if user_signed_in? && current_user.role == 'admin' && action_name != "show" %>
                <%= link_to 'Edit this movie', edit_movie_path(movie), class: "inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300" %>
             <% end %>
          </div> 
+         <script>
+$(document).ready(function() {
+  var logID = 'log',
+    log = $('<div id="'+logID+'"></div>');
+  $('body').append(log);
+    $('[type*="radio"]').change(function () {
+      var me = $(this);
+      log.html(me.attr('value'));
+    });
+})
+</script>
       </div>
    </div>
 </div>

@@ -1,7 +1,7 @@
 
 <div class="w-[90%] m-auto">
 <%= form_tag movies_path, method: :get do %>
-  <%= select_tag :category_id, options_for_select(Category.all.map { |c| [c.name, c.id] }), prompt: "All categories" %>
+  <%= select_tag :category_id, options_for_select(Category.all.map { |c| [c.name, c.id] }), {prompt: "All categories", onchange: 'this.form.submit();' } %>
   <%= submit_tag "Filter" %>
 <% end %>
 
