@@ -40,5 +40,12 @@
 }
 
 .alert {
-  @apply mx-auto bg-red-500 py-4 my-4 px-2 text-white w-[90%]
+  @apply py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block w-[90%] mx-auto
+}
+
+.notice {
+  @apply py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block w-[90%] mx-auto
+}
+.new_rating {
+  @apply flex flex-row
 }
