@@ -51,7 +51,7 @@
                      <input type="radio" id="rating-i" name="rating" value="i" /><label for="rating-i">i</label>
                   <% end %>
                   <% ((num+1)..10).each do |i| %>  
-                     <% f.radio_button :score, i, checked: params[:rating].try(:[], :score) == i %>
+                     <%= f.radio_button :score, i, checked: params[:rating].try(:[], :score) == i %>
                      <%#= show_svg("star-empty.svg")%>
                      <input type="radio" id="rating-i" name="rating" value="i" /><label for="rating-i">i</label>
                   <% end %>

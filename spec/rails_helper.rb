@@ -1,5 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'capybara/rspec'
+# require 'capybara/rails'
+# require 'selenium/webdriver'
+# require 'support/database_cleaner'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -60,4 +64,20 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+#   Capybara.register_driver :headless_chrome do |app|
+#   options = Selenium::WebDriver::Chrome::Options.new
+#   options.add_argument('--headless')
+#   options.add_argument('--disable-gpu')
+#   options.add_argument('--disable-dev-shm-usage')
+#   options.add_argument('--disable-extensions')
+#   options.add_argument('--no-sandbox')
+#   options.add_argument('--disable-popup-blocking')
+#   options.add_argument('--disable-translate')
+#   options.add_argument('--disable-default-apps')
+#   options.add_argument('--remote-debugging-port=9222')
+#   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+# end
+
+# Capybara.javascript_driver = :headless_chrome
 end
