@@ -2,15 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  .btn {
+    @apply mt-3 rounded-lg py-1 px-5 inline-block font-medium cursor-pointer;
   }
 }
-
-*/
 .pagy-nav.pagination {
   @apply isolate inline-flex -space-x-px rounded-md shadow-none w-[90%] justify-center my-4 
 }
@@ -47,5 +43,5 @@
   @apply py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block w-[90%] mx-auto
 }
 .new_rating {
-  @apply flex flex-row
+  @apply flex flex-col
 }

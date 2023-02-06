@@ -14,24 +14,24 @@
  *= require_self
  */
 
- @import "compass/css3";
- .star-cb-group {
+ /* @import "compass/css3";
+ .star-cb-group { */
 	/* remove inline-block whitespace */
-	 font-size: 0;
+	 /* font-size: 0; */
 	/* flip the order so we can use the + and ~ combinators */
-	 unicode-bidi: bidi-override;
-	 direction: rtl;
+	 /* unicode-bidi: bidi-override;
+	 direction: rtl; */
 	/* the hidden clearer */
-}
+/* }
  .star-cb-group * {
 	 font-size: 1rem;
 }
  .star-cb-group > input {
 	 display: none;
 }
- .star-cb-group > input + label {
+ .star-cb-group > input + label { */
 	/* only enough room for the star */
-	 display: inline-block;
+	 /* display: inline-block;
 	 overflow: hidden;
 	 text-indent: 9999px;
 	 width: 1em;
@@ -66,7 +66,7 @@
 	 content: '\2605';
 	 color: #e52;
 	 text-shadow: 0 0 1px #333;
-}
+} */
  /* :root {
 	 font-size: 2em;
 	 font-family: Helvetica, arial, sans-serif;
@@ -75,7 +75,7 @@
 	 background: #333;
 	 color: #888;
 } */
- fieldset {
+ /* fieldset {
 	 border: 0;
 	 width: 10em;
 	 border-radius: 1px;
@@ -89,4 +89,40 @@
 }
  h1 {
 	 text-align: center;
+} */
+
+
+
+.rating {
+display: flex;
+flex-direction: row-reverse;
+justify-content: center;
 }
+
+ 
+.rating > input{ display:none;}
+
+.rating > label {
+position: relative;
+width: 1.1em;
+font-size: 1.575rem;
+color: #FFD700;
+cursor: pointer;
+}
+
+.rating > label::before{
+content: "\2605";
+position: absolute;
+opacity: 0;
+}
+    
+.rating > label:hover:before,
+.rating > label:hover ~ label:before {
+opacity: 1 !important;
+}
+
+.rating > input:checked ~ label:before{
+opacity:1;
+}
+
+.rating:hover > input:checked ~ label:before{ opacity: 0.4; }
