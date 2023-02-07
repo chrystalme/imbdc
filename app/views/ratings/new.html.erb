@@ -1,5 +1,6 @@
-<turbo-frame id="<%= dom_id @movie, :rating %>" >
+<%#= render @movie %>
+<%= turbo_frame_tag "rating_movie_#{@movie.id}" do %>
 <div class="mx-auto md:w-2/3 w-full">    
   <%= render "form" %>
 </div>
-</turbo-frame>
+<% end %>

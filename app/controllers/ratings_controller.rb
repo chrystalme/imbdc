@@ -8,16 +8,16 @@ class RatingsController < ApplicationController
 
   def create
     @rating = @movie.ratings.find_or_initialize_by(user: current_user)
+    
     @rating.update(ratings_params)
 
     respond_to do |format|
       if @rating.save
         format.html { redirect_to movies_path, notice: 'Ratings created successfully.' }
         format.turbo_stream { flash.now[:notice] = 'Ratings created successfully.' }
-       else
+      else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
-        format.turbo_stream { render :new, flash.now[:notice] = 'There seem to be an error' }
+        format.turbo_stream { render :new, status: :unprocessable_entity }
        end
     end
   end
