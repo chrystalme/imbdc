@@ -1,0 +1,21 @@
+ <%= form_for [@movie, @movie.ratings.build] do |f| %>
+            <span class="rating" >
+               <% if user_signed_in? %>
+                  <% num = user_rating_for(@movie)%>
+                  <% 10.downto(num + 1).each do |i| %>  
+                     <%= f.radio_button :score, i, checked: params[:rating].try(:[], :score) == i %>
+                        <label for=<%="rating_score_#{i}"%> >☆</label>
+                  <% end %>
+                  <% num.downto(1).each do |i| %>
+                     <%= f.radio_button :score, i, checked: params[:rating].try(:[], :score) == i  %>
+                         <label for=<%="rating_score_#{i}"%>>☆</label>
+                  <% end %>
+               <% else %>
+                  <% 10.downto(1).each do |i| %>  
+                     <%= f.radio_button :score, i, checked: params[:rating].try(:[], :score) == i %>
+                        <label for=<%="rating_score_#{i}"%> >☆</label>
+                  <% end %>
+               <% end %>
+            </span>
+            <%= button_to "Rate", movie_ratings_path(@movie),  class: 'text-black bg-yellow-500 px-4 py-3 rounded mx-auto w-full'%>
+<% end %>
