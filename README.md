@@ -1,5 +1,5 @@
 # README
-
+![Screen shot](app/assets/images/Screenshot%202023-02-08%20at%2016-00-07%20Imdbc.png)
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
