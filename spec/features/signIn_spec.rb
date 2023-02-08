@@ -25,10 +25,19 @@ RSpec.describe "Sign in process", type: :feature do
   
   scenario 'user wants to signin with wrong credentials' do
     visit new_user_session_path
-    fill_in 'email', with: 'tester@test.com'
-    fill_in 'Password', with: '123456'
+    fill_in 'email', with: user.email
+    fill_in 'Password', with: user.password
     click_button 'Sign in'
     
     expect(page).to have_content('Signed in successfully')
+  end
+
+  scenario 'user wants to signin with wrong credentials' do
+    visit new_user_session_path
+    fill_in 'email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign in'
+    
+    expect(page).to_not have_content('Invalid Email or password.')
   end
 end
