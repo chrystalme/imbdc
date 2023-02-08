@@ -42,4 +42,4 @@
     
     ### License
     
-    Mit
+   This project is [MIT](https://mit-license.org/) licensed.
