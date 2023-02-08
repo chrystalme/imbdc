@@ -1,24 +1,45 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+## imdbc is a simple imdb clone that shows authentication, authorization with roles and adding ratings review to movies.
 
 * Ruby version
+    ```
+    rails 3.1.3
+    ```
 
 * System dependencies
+  - RSpec
+  - Shoulda-matcher
+  - Pagy
+  - devise
+  - tailwindcss
+ 
 
 * Configuration
 
-* Database creation
+     ✔️ Clone repository
+     ```
+     $ git clone @git:github.com/chrystalme/imdbc.git
+     ```
+     ✔️ Install the dependencies
+     ``` 
+     $ bundle install
+     ```
+ * Database creation
 
-* Database initialization
+      ✔️ Migrate database
+    ```
+    $ rails db:migrate
+    ```
 
+   ✔️ Seed the database
+     ```
+     $ rails db:seed
+     ```
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    ```
+    $ rspec spec
+    ```
+    
+    ### License
+    
+    Mit
