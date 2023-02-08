@@ -1,6 +1,43 @@
-<%#= render @movie %>
-<%= turbo_frame_tag "rating_movie_#{@movie.id}" do %>
+
+<%#= turbo_frame_tag "rating_movie_#{@movie.id}" do %>
 <div class="mx-auto md:w-2/3 w-full">    
-  <%= render "form" %>
+<div class="max-w-sm bg-white border border-gray-200 my-5 rounded-lg mx-auto">
+      <%= link_to movie_path(@movie) do %>
+         <%= image_tag 'https://via.placeholder.com/390x320/?Text=rateMovies.com', class: "rounded-t-lg"  %>
+      <% end %>
+      <div class="p-5">
+         <div class="flex flex-row justify-between">
+               <p class="my-5">
+               
+               <strong class="block font-medium mb-1">Ratings:</strong>
+               <span class='flex items-center text-sm'><svg aria-hidden="true" class="text-yellow-400 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>1 star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> 
+               <%= @movie.average_ratings %> from <%= pluralize(@movie.ratings.count, 'review')%></span> 
+            </p>
+
+            <p class="my-5">
+               <strong class="block font-medium mb-1">Category:</strong>
+               <%= @movie.category.name %>
+            </p>
+         </div>
+        
+         <%= link_to movie_path(@movie) do %>
+         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900"><%= truncate(@movie.title, length: 35)%></h5>
+         <% end %>
+         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><%= truncate(@movie.text, length: 60)%></p>
+
+       <%#= turbo_frame_tag "rating_movie_#{movie.id}" do %>
+         <div class="w-full flex text-center justify-center">
+            <%= render "form" %>
+         </div> 
+       <%# end%>
+
+         <div class="flex item-center my-3" id="ratings">
+            <% if user_signed_in? && current_user.role == 'admin' && action_name != "show" %>
+               <%= link_to 'Edit this movie', edit_movie_path(@movie), class: "inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300" %>
+            <% end %>
+         </div> 
+      </div>
+   </div>
+  
 </div>
-<% end %>
+<%# end %>

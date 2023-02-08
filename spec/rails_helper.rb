@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'spec_helper'
-require 'capybara/rspec'
+require "spec_helper"
+require "capybara/rspec"
 # require 'selenium/webdriver'
 # require 'support/database_cleaner'
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 # Add additional requires below this line. Rails is not loaded until this point!
 
-require 'rspec/rails'
-require 'devise'
+require "rspec/rails"
+require "devise"
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -65,21 +67,21 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-#   Capybara.register_driver :headless_chrome do |app|
-#   options = Selenium::WebDriver::Chrome::Options.new
-#   options.add_argument('--headless')
-#   options.add_argument('--disable-gpu')
-#   options.add_argument('--disable-dev-shm-usage')
-#   options.add_argument('--disable-extensions')
-#   options.add_argument('--no-sandbox')
-#   options.add_argument('--disable-popup-blocking')
-#   options.add_argument('--disable-translate')
-#   options.add_argument('--disable-default-apps')
-#   options.add_argument('--remote-debugging-port=9222')
-#   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
-# end
+  #   Capybara.register_driver :headless_chrome do |app|
+  #   options = Selenium::WebDriver::Chrome::Options.new
+  #   options.add_argument('--headless')
+  #   options.add_argument('--disable-gpu')
+  #   options.add_argument('--disable-dev-shm-usage')
+  #   options.add_argument('--disable-extensions')
+  #   options.add_argument('--no-sandbox')
+  #   options.add_argument('--disable-popup-blocking')
+  #   options.add_argument('--disable-translate')
+  #   options.add_argument('--disable-default-apps')
+  #   options.add_argument('--remote-debugging-port=9222')
+  #   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  # end
 
-# Capybara.javascript_driver = :headless_chrome
+  # Capybara.javascript_driver = :headless_chrome
 
   Shoulda::Matchers.configure do |config|
     config.integrate do |with|
