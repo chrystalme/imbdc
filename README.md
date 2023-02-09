@@ -1,5 +1,3 @@
-## imdbc is a simple imdb clone that shows authentication, authorization with roles and adding ratings review to movies.
-
 * Ruby version
     ```
     rails 3.1.3

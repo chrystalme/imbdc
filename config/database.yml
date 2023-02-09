@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: imdbc_production
-  username: imdbc
-  password: <%= ENV["IMDBC_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # database: imdbc_production
+  # username: imdbc
+  # password: <%= ENV["IMDBC_DATABASE_PASSWORD"] %>

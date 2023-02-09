@@ -17,5 +17,5 @@
                   <% end %>
                <% end %>
             </span>
-            <%= button_to "Rate", movie_ratings_path(@movie),  class: 'text-black bg-yellow-500 px-4 py-3 rounded mx-auto w-full'%>
+            <%= button_to "Rate", movie_ratings_path(@movie), data: { turbo: false } ,class: 'text-black bg-yellow-500 px-4 py-3 rounded mx-auto w-full'%>
 <% end %>

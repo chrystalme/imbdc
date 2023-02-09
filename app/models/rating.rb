@@ -14,7 +14,7 @@ class Rating < ApplicationRecord
 
   private
 
-  def update_movie_rating
-    movie.update(average_ratings: movie.ratings.average(:score))
-  end
+    def update_movie_rating
+      movie.update(average_ratings: movie.ratings.average(:score))
+    end
 end
