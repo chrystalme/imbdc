@@ -1,3 +1,4 @@
+![Screen shot](app/assets/images/Screenshot%202023-02-08%20at%2016-00-07%20Imdbc.png)
 * Ruby version
     ```
     rails 3.1.3
