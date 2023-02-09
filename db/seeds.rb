@@ -9,7 +9,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "\n== Seeding the database with fixtures =="
+User.create!(email: "afam_ifeanyi@live.com", password: '123456', password_confirmation: '123456', role: 'admin')
 20.times do
-  Movie.create!(title: Faker::Movie.title, text: Faker::Lorem.paragraph, category: Category.all.sample)
+  Movie.create!(title: Faker::Movie.title, text: Faker::Lorem.paragraph, category: Category.all.sample, user_id: 1)
 end
 puts "\n== Seeding completed. =="
