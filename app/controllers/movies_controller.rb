@@ -3,7 +3,7 @@
 class MoviesController < ApplicationController
   skip_before_action :authenticate_user!, only: %w[index]
   before_action :set_movie, only: %i[show edit update destroy]
-
+  before_action :check_admin, only: %i[create edit destroy update]
   # GET /movies or /movies.json
   def index
     if params[:category_id].present?
@@ -76,5 +76,11 @@ class MoviesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def movie_params
       params.require(:movie).permit(:title, :text, :ratings, :category)
+    end
+
+    def check_admin
+      unless current_user.is_admin?
+        redirect_to root_path, alert: "You are not authorized to perform this action."
+      end
     end
 end

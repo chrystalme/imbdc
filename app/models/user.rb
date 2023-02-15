@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
+
   enum role: %i[user admin]
   has_many :ratings, dependent: :destroy
   has_many :published_movies, class_name: "Movie", foreign_key: "publisher_id"
@@ -11,4 +12,8 @@ class User < ApplicationRecord
   def name
     email.split("@").first.capitalize
   end
+
+  def is_admin?
+    role == 'admin'
+  end 
 end
