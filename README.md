@@ -33,6 +33,18 @@
      ```
      $ rails db:seed
      ```
+     
+* How to run the application
+
+    ```
+    $ bin/dev
+    ```
+    
+   ✔️ on your local machine visit 
+   
+   ```
+   http://localhost:3000
+   ```
 * How to run the test suite
 
     ```
