@@ -12,4 +12,11 @@ class Movie < ApplicationRecord
   validates :text, length: { minimum: 10 }
   validates :publisher, presence: true
   validates :category, presence: true
+
+  # after_save :movie_counter_update
+
+  private 
+  # def movie_counter_update
+  #   publisher.increment!(:movie_counter)
+  # end
 end
