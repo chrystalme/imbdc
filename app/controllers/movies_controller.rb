@@ -77,10 +77,4 @@ class MoviesController < ApplicationController
     def movie_params
       params.require(:movie).permit(:title, :text, :ratings, :category)
     end
-
-    def check_admin
-      unless current_user.is_admin?
-        redirect_to root_path, alert: "You are not authorized to perform this action."
-      end
-    end
 end
