@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable#, :confirmable, :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers: [:facebook]
 
-
-  enum role: %i[user admin]
   has_many :ratings, dependent: :destroy
   has_many :published_movies, class_name: "Movie", foreign_key: "publisher_id"
   has_many :rated_movies, through: :ratings, source: :movie
@@ -14,6 +12,6 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    role == 'admin'
+    admin == true
   end 
 end

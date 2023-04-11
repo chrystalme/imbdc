@@ -2,14 +2,16 @@ import { Controller } from '@hotwired/stimulus';
 
 // Connects to data-controller="filters"
 export default class extends Controller {
-  connect() {}
-
-  static get targets() {
-    return ['form'];
+  connect() {
+    console.log('FiltersController connected', this.element);
+  }
+  initialize() {
+    this.submit = debounce(this.submit.bind(this), 300);
   }
 
-  submit(event) {
-    event.preventDefault();
-    this.formTarget.requestSubmit();
+  static targets = ['filters'];
+
+  submit() {
+    this.filtersTarget.requestSubmit();
   }
 }

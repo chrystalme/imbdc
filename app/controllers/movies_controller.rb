@@ -7,9 +7,11 @@ class MoviesController < ApplicationController
   # GET /movies or /movies.json
   def index
     if params[:category_id].present?
-      @pagy, @movies = pagy(Movie.ordered.where(category: params[:category_id]), items: 6)
+      @pagy, @movies = pagy(Movie.ordered.category(params[:category_id]), items: 6)
     else
       @pagy, @movies = pagy(Movie.ordered, items: 6)
+      # scope = Movie.where("title ILIKE ? or category_id = ?", "%#{params[:search]}%", params[:category_id]).ordered
+      # @pagy, @movies = pagy(scope, items: 6)
     end
   end
 

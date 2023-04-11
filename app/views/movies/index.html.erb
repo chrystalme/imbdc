@@ -1,21 +1,33 @@
 <div class="w-[90%] m-auto">
-<%= form_tag movies_path, method: :get, data: {
-  controller: 'filters', filter_target: 'form', turbo_frame: "movies", turbo_action: 'advance'
-} do %>
-  <%= select_tag :category_id, options_for_select(Category.all.map { |c| [c.name, c.id] }), {prompt: "All categories", onchange: 'this.form.submit();' } %>
-  <%= submit_tag "Filter" %>
-<% end %>
+  <%= form_with  url: movies_path, method: :get, data: {
+    controller: 'filters', filters_target: 'form', turbo_frame: "movies", turbo_action: 'advance'
+  } do  %>
+    <div class="flex justify-between">
+      <div>
+        <%#= f.select :category_id, options_for_select(Category.all.map { |c| [c.name, c.id] }), {include_blank: "All categories", onchange: 'this.form.submit();', data: {action: "filters#submit"} } %>
+        <%= select_tag :category_id, options_for_select(Category.all.map { |c| [c.name, c.id] }), {prompt: "All categories", data: {controller: 'filters' ,action: "form#submit"} } %>
+        <%#= submit_tag "Filter" %>
+      </div>
+      <!---
+    <div class="ml-5">
+      <%#= f.text_field "search", {placeholder: 'Search movie titles', data:{ action: "form#submit"}} %>
+      <%#= search_field_tag "Search",{} ,onchange: 'this.form.submit();', {value: params[:search], data: { action: "filters#submit"}} %>
+      <%#= search_field_tag "search", {}, placeholder: "Search...", {  data: { action: "filters#submit"}}, onchange: 'this.form.submit();' %>
+
+    </div>
+  --->
+    </div>
+  <% end %>
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl mt-4">Movies</h1>
     <% if user_signed_in? && current_user.is_admin? %>
-     <%= link_to 'New movie', new_movie_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      <%= link_to 'New movie', new_movie_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
     <% end %>
   </div>
-
-<%=turbo_frame_tag "movies" do %> 
-      <div  class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 grid-flow-row gap-4">
-        <%= render @movies%>
-      </div>
-  </div>
- <% end %>
-  <%== pagy_nav(@pagy).html_safe %>
+  <%=turbo_frame_tag "movies" do %>
+    <div  class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 grid-flow-row gap-4">
+      <%= render @movies %>
+    </div>
+  <% end %>
+</div>
+<%== pagy_nav(@pagy).html_safe %>
