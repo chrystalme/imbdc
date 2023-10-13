@@ -9,6 +9,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "\n== Seeding the database with fixtures =="
+category = ["Action", "Comedy", "Drama", "Fantasy", "Horror", "Romance", "Thriller" ]
+category.each do |category|
+  Category.create!(name: category)
+end
 20.times do
   Movie.create!(title: Faker::Movie.title, text: Faker::Lorem.paragraph, category: Category.all.sample)
 end
