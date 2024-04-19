@@ -8,5 +8,6 @@
   -->
 
   <% flash.each do |name, message| %>
-    <%= content_tag :div, message, class: 'notice' %>
+    <%= content_tag :div, message, class: "#{name} m-auto w-full" %>
   <% end %>
+
