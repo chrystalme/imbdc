@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Movie < ApplicationRecord
-  scope :ordered, -> { order(title: :asc) }
+  # Add searchkick to movie model
+  # searchkick
+  # scope :ordered, -> { order(title: :asc) }
   belongs_to :category
   belongs_to :publisher, class_name: "User"
   has_many :ratings, dependent: :destroy
@@ -10,13 +12,13 @@ class Movie < ApplicationRecord
   validates :title, presence: true
   validates :publisher, presence: true
   validates :text, length: { minimum: 10 }
-  validates :publisher, presence: true
   validates :category, presence: true
 
-  # after_save :movie_counter_update
+  def self.ordered
+    order(title: :asc)
+  end
 
-  private 
-  # def movie_counter_update
-  #   publisher.increment!(:movie_counter)
+  # def self.ransackable_attributes(auth_object = nil)
+  #   ["average_ratings", "category_id", "created_at", "id", "publisher_id", "text", "title", "updated_at"]
   # end
 end

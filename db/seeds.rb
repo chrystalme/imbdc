@@ -8,6 +8,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+
+puts "\n== Seeding the database with fixtures =="
+
 puts "\n== Seeding the database =="
 User.create!(email: "admin@admin.com", password: '123456', password_confirmation: '123456', role: 'admin')
 puts "\n== Admin created as admin with password 123456 =="
@@ -15,7 +18,9 @@ category = ["Action", "Comedy", "Drama", "Fantasy", "Horror", "Romance", "Thrill
 category.each do |category|
   Category.create!(name: category)
 end
+
 puts "\n== Categories created == "
+
 20.times do
   Movie.create!(title: Faker::Movie.title, text: Faker::Lorem.paragraph, category: Category.all.sample, publisher: User.find_by(email: 'admin@admin.com'))
 end

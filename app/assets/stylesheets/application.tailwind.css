@@ -36,11 +36,11 @@
 }
 
 .alert {
-  @apply py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block w-[90%] mx-auto
+  @apply py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg flex w-[90%] mx-auto
 }
 
 .notice {
-  @apply py-2 px-3 flex items-center bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block w-[90%] mx-auto
+  @apply py-2 px-3 flex items-center bg-green-50 mb-5 text-green-500 font-medium rounded-lg flex w-[90%] mx-auto
 }
 .new_rating {
   @apply flex flex-col
