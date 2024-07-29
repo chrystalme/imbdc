@@ -64,6 +64,7 @@ group :development, :test do
   # for code formatting and linting
   gem "rubocop"
   gem "rubocop-rails"
+  gem "factory_bot_rails"
 end
 
 group :development do

@@ -12,7 +12,6 @@ class Movie < ApplicationRecord
   validates :title, presence: true
   validates :publisher, presence: true
   validates :text, length: { minimum: 10 }
-  validates :publisher, presence: true
   validates :category, presence: true
 
   def self.ordered
